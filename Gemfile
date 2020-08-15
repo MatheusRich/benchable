@@ -10,4 +10,5 @@ gem 'rake', '~> 12.0'
 gem 'rspec', '~> 3.0'
 gem 'rubocop', '~> 0.89.1'
 gem 'rubocop-rspec', '~> 1.42', require: false
+gem 'simplecov', '~> 0.18.5', require: false
 gem 'solargraph', '~> 0.39.14'

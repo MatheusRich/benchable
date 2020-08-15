@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter '/spec/'
+  enable_coverage :branch if RUBY_VERSION >= '2.5'
+end
+
 require 'benchable'
 
 RSpec.configure do |config|
