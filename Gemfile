@@ -5,8 +5,8 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in benchable.gemspec
 gemspec
 
+gem 'guard-rspec', require: false
 gem 'rake', '~> 12.0'
 gem 'rspec', '~> 3.0'
 gem 'rubocop', '~> 0.89.1'
 gem 'solargraph', '~> 0.39.14'
-gem 'guard-rspec', require: false
