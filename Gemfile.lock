@@ -81,6 +81,8 @@ GEM
       unicode-display_width (>= 1.4.0, < 2.0)
     rubocop-ast (0.3.0)
       parser (>= 2.7.1.4)
+    rubocop-rspec (1.42.0)
+      rubocop (>= 0.87.0)
     ruby-progressbar (1.10.1)
     shellany (0.0.1)
     solargraph (0.39.14)
@@ -111,6 +113,7 @@ DEPENDENCIES
   rake (~> 12.0)
   rspec (~> 3.0)
   rubocop (~> 0.89.1)
+  rubocop-rspec (~> 1.42)
   solargraph (~> 0.39.14)
 
 BUNDLED WITH
