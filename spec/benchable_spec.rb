@@ -9,7 +9,7 @@ RSpec.describe Benchable do
 
   describe '.build' do
     subject(:build_benchmark) do
-      described_class.build do
+      described_class.build(:ips, time: 0.5, warmup: 0.2) do
         def setup
           puts 'Setting up...'
         end
@@ -22,7 +22,7 @@ RSpec.describe Benchable do
           1.send(:+, 1)
         end
 
-        def other; end
+        def an_invalid_bench_test; end
       end
     end
 
@@ -36,6 +36,10 @@ RSpec.describe Benchable do
 
     it 'defines benchmark cases' do
       expect(build_benchmark.cases).to match_array %i[bench_sum bench_sum_with_send]
+    end
+
+    it 'does something' do
+      build_benchmark.run
     end
   end
 end
