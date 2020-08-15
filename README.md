@@ -29,11 +29,11 @@ Benchable.bench do
   end
 
   def bench_sort
-    array.dup.sort 
+    @array.dup.sort 
   end
 
   def bench_sort!
-    array.dup.sort!
+    @array.dup.sort!
   end
 end
 ```
