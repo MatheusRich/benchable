@@ -5,6 +5,8 @@ require 'benchmark/ips'
 
 module Benchable
   class Benchmark
+    DEFAULT_WIDTH = 20
+
     def initialize(type, options = {})
       @benchmark_type = type
       @options = options
@@ -40,7 +42,9 @@ module Benchable
     end
 
     def benchmark(&block)
-      ::Benchmark.public_send(@benchmark_type, 20, &block)
+      width = @options[:width] || DEFAULT_WIDTH
+
+      ::Benchmark.public_send(@benchmark_type, width, &block)
     end
   end
 end
