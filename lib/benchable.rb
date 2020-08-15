@@ -1,4 +1,6 @@
-require "benchable/version"
+# frozen_string_literal: true
+
+require 'benchable/version'
 
 module Benchable
   class Error < StandardError; end
