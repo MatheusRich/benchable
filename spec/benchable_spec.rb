@@ -9,7 +9,7 @@ RSpec.describe Benchable do
 
   describe '.build' do
     subject(:build_benchmark) do
-      described_class.build(:ips, time: 0.5, warmup: 0.2) do
+      described_class.build(:ips, time: 0.2, warmup: 0.1) do
         def setup
           puts 'Setting up...'
         end
