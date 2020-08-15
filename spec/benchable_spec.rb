@@ -12,11 +12,11 @@ RSpec.describe Benchable do
           puts 'Setting up...'
         end
 
-        def bench_addition
+        def bench_sum
           1 + 1
         end
 
-        def bench_addition_with_send
+        def bench_sum_with_send
           1.send(:+, 1)
         end
 
@@ -33,7 +33,7 @@ RSpec.describe Benchable do
     end
 
     it 'defines benchmark cases' do
-      expect(build_benchmark.cases).to eq %i[bench_addition bench_addition_with_send]
+      expect(build_benchmark.cases).to match_array %i[bench_sum bench_sum_with_send]
     end
   end
 end
