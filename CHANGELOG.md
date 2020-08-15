@@ -11,5 +11,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 ### Removed
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.110...HEAD
-[0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1
+[unreleased]: https://github.com/MatheusRich/benchable/compare/v0.0.110...HEAD
+[0.0.1]: https://github.com/MatheusRich/benchable/releases/tag/v0.0.1
