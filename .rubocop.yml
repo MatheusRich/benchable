@@ -1,0 +1,15 @@
+require:
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+
+Style/DocumentationMethod:
+  Enabled: true
