@@ -11,5 +11,8 @@ Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
 
+Style/Documentation:
+  Enabled: false
+
 Style/DocumentationMethod:
-  Enabled: true
+  Enabled: false
