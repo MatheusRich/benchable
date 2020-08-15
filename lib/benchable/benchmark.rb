@@ -2,8 +2,6 @@
 
 module Benchable
   class Benchmark
-    attr_reader :cases
-
     def initialize
       @cases = []
     end
@@ -11,5 +9,9 @@ module Benchable
     def setup; end
 
     def run; end
+
+    def cases
+      public_methods.grep(/\Abench_/)
+    end
   end
 end

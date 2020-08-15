@@ -5,5 +5,12 @@ require_relative 'benchable/version'
 
 module Benchable
   class Error < StandardError; end
-  # Your code goes here...
+
+  def self.build(&block)
+    bench = Benchmark.new
+
+    bench.instance_exec(&block)
+
+    bench
+  end
 end
