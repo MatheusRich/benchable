@@ -7,11 +7,9 @@ module Benchable
   class Error < StandardError; end
 
   def self.build(type = :bm, options, &block)
-    bench = Benchmark.new(type, **options)
+    Benchmark.class_eval(&block)
 
-    bench.instance_exec(&block)
-
-    bench
+    Benchmark.new(type, **options)
   end
 
   def self.bench(type = :bm, options, &block)
