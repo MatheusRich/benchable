@@ -19,29 +19,31 @@ Or install it yourself as:
     $ gem install benchable
 
 ## Usage
+### Basic usage
+Use the method `Benchable.bench` to declare a benchmark. Write each benchmark case with the `bench` method. The benchmark will run automatically.
 
 ```ruby
 Benchable.bench do
-  def setup
-    @array = (1..1000000).map { rand }
+  bench 'sort' do
+    (1..1000000).map { rand }.sort 
   end
 
-  def bench_sort
-    @array.dup.sort 
-  end
-
-  def bench_sort!
-    @array.dup.sort!
+  bench 'sort!' do
+    (1..1000000).map { rand }.sort!
   end
 end
 # Output:
 #                            user     system      total        real
-# Sort                   0.400133   0.011995   0.412128 (  0.412339)
-# Sort!                  0.388636   0.003980   0.392616 (  0.393054)
+# Sort                   0.483720   0.003975   0.487695 (  0.487695)
+# Sort!                  0.477415   0.000009   0.477424 (  0.477409)
 ```
 
+You can write a setup method to DRY up any logic.
+
+**Important:** The setup method runs **only once** before **all** benchs, so be careful with mutation inside your benchs.
+
 ```ruby
-Benchable.bench(:ips, time: 5, warmup: 2) do
+Benchable.bench do
   setup do
     @array = (1..1000000).map { rand }
   end
@@ -53,6 +55,57 @@ Benchable.bench(:ips, time: 5, warmup: 2) do
   bench 'sort!' do
     @array.dup.sort!
   end
+end
+# Output:
+#                            user     system      total        real
+# Sort                   0.400133   0.011995   0.412128 (  0.412339)
+# Sort!                  0.388636   0.003980   0.392616 (  0.393054)
+```
+> We've used `Array#dup` in the example above to prevent the benchmarks for modifying the original array
+
+### Benchmark types
+There are 3 benchmark types available: `bm`, `bmbm` and `ips`. You can specify it by passing the type as a symbol on the `Benchable.bench` method. The default type is `bm`.
+
+```ruby
+Benchable.bench(:bm) do
+  # ...
+end
+
+Benchable.bench(:bmbm) do
+  # ...
+end
+
+Benchable.bench(:ips) do
+  # ...
+end
+```
+
+Given an invalid benchmark type, Benchable will raise an exception.
+```ruby
+Benchable.bench(:invalid) do
+  # ...
+end
+# => Benchable::Error (Invalid benchmark type 'invalid')
+```
+
+### Benchmark options
+You can provide benchmark options by passing a hash to the `Benchable.bench` method.
+
+### Options for `Benchmark.bm` and `Benchmark.bmbm`
+On `bm` and `bmbm` benchmarks the only available option is `width`, which specifies the leading spaces for labels on each line. The default width is `20`.
+
+```ruby
+Benchable.bench(width: 25) do
+  # ...
+end
+```
+
+### Options for `Benchmark::IPS`
+If you're using, you can pass any option accepted by `Benchmark::IPS` `config` method.
+
+```ruby
+Benchable.bench(:ips, time: 5, warmup: 2) do
+  # 
 end
 # Output:
 # Warming up --------------------------------------
