@@ -6,10 +6,13 @@ require 'benchmark/ips'
 module Benchable
   class Benchmark
     DEFAULT_WIDTH = 20
+    BENCHMARK_TYPES = %i[bm bmbm ips].freeze
 
-    def initialize(type, options = {})
-      @benchmark_type = type
+    def initialize(benchmark_type, options = {})
+      @benchmark_type = benchmark_type
       @options = options
+
+      raise Error, "Invalid benchmark type '#{benchmark_type}'" unless valid_benchmark_type?
     end
 
     def self.setup(&block)
@@ -38,6 +41,10 @@ module Benchable
     private
 
     attr_reader :benchmark_type, :options
+
+    def valid_benchmark_type?
+      BENCHMARK_TYPES.include? benchmark_type
+    end
 
     def run_benchmark
       benchmark do |with|

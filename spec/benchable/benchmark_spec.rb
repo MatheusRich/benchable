@@ -17,6 +17,14 @@ RSpec.describe Benchable::Benchmark do
     expect(benchmark.cases).to eq []
   end
 
+  context 'with an invalid benchmark type' do
+    subject(:invalid_benchmark) { described_class.new(:invalid) }
+
+    it 'raises an exception' do
+      expect { invalid_benchmark }.to raise_error Benchable::Error, "Invalid benchmark type 'invalid'"
+    end
+  end
+
   describe '.setup' do
     let(:klass) { Class.new(described_class) }
 
