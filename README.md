@@ -36,9 +36,13 @@ Benchable.bench do
     @array.dup.sort!
   end
 end
+# =>
+#                            user     system      total        real
+# Sort                   0.400133   0.011995   0.412128 (  0.412339)
+# Sort!                  0.388636   0.003980   0.392616 (  0.393054)
 ```
 
-```ruby
+<!-- ```ruby
 Benchable.bench(type: :ips, time: 5, warmup: 2) do
   setup do
     @array = (1..1000000).map { rand }
@@ -52,7 +56,7 @@ Benchable.bench(type: :ips, time: 5, warmup: 2) do
     @array.dup.sort!
   end
 end
-```
+``` -->
 
 ## Development
 
