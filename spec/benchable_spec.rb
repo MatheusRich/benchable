@@ -10,11 +10,11 @@ RSpec.describe Benchable do
   describe '.build' do
     subject(:build_benchmark) do
       described_class.build(:ips, time: 0.2, warmup: 0.1) do
-        def setup
+        setup do
           puts 'Setting up...'
         end
 
-        def bench_sum
+        bench 'sum' do
           1 + 1
         end
 
@@ -22,7 +22,7 @@ RSpec.describe Benchable do
           1.send(:+, 1)
         end
 
-        def an_invalid_bench_test; end
+        def an_invalid_bench_method; end
       end
     end
 
