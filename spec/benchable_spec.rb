@@ -42,4 +42,21 @@ RSpec.describe Benchable do
       build_benchmark.run
     end
   end
+
+  describe '.bench' do
+    subject(:run_benchmark) do
+      described_class.bench
+    end
+
+    let(:bench_object) { instance_double(Benchable::Benchmark, run: true) }
+
+    before do
+      allow(described_class).to receive(:build).with(:bm, {}).and_return(bench_object)
+    end
+
+    it 'builds and runs a benchmark' do
+      run_benchmark
+      expect(bench_object).to have_received(:run)
+    end
+  end
 end

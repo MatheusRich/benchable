@@ -6,13 +6,13 @@ require_relative 'benchable/version'
 module Benchable
   class Error < StandardError; end
 
-  def self.build(type = :bm, options, &block)
+  def self.build(type = :bm, options = {}, &block)
     bench_class = Class.new(Benchmark, &block)
 
     bench_class.new(type, **options)
   end
 
-  def self.bench(type = :bm, options, &block)
+  def self.bench(type = :bm, options = {}, &block)
     build(type, options, &block).run
   end
 end
