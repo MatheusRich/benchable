@@ -40,7 +40,6 @@ end
 # Sort!                  0.388636   0.003980   0.392616 (  0.393054)
 ```
 
-TODO:
 ```ruby
 Benchable.bench(:ips, time: 5, warmup: 2) do
   setup do
@@ -60,8 +59,8 @@ end
 #                 Sort     1.000  i/100ms
 #                Sort!     1.000  i/100ms
 # Calculating -------------------------------------
-#                 Sort      2.496  (± 0.0%) i/s -     13.000  in   5.210732s
-#                Sort!      2.428  (± 0.0%) i/s -     13.000  in   5.358355s
+#                 Sort      2.114  (± 0.0%) i/s -     11.000  in   5.205127s
+#                Sort!      2.120  (± 0.0%) i/s -     11.000  in   5.189772s
 ```
 
 ## Development
