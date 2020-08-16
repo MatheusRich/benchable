@@ -21,7 +21,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-Benchable.bench(type: :ips, time: 5, warmup: 2) do
+Benchable.bench do
   def setup
     @array = (1..1000000).map { rand }
   end
