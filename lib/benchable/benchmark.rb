@@ -19,7 +19,7 @@ module Benchable
       define_method(:setup, &block)
     end
 
-    def self.bench(name = '', &block)
+    def self.bench(name, &block)
       define_method(method_name_for(name), &block)
     end
 
