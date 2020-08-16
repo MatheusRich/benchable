@@ -38,8 +38,8 @@ RSpec.describe Benchable do
       expect(build_benchmark.cases).to match_array %i[bench_sum bench_sum_with_send]
     end
 
-    it 'does something' do
-      build_benchmark.run
+    it 'accepts options without defining a benchmark type' do
+      expect { described_class.build(width: 1) }.not_to raise_error
     end
   end
 
