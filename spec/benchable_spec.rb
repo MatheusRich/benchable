@@ -45,18 +45,37 @@ RSpec.describe Benchable do
 
   describe '.bench' do
     subject(:run_benchmark) do
-      described_class.bench
+      described_class.bench(:ips, warmup: 0, time: 0.1) do
+        bench 'sum' do
+          1 + 1
+        end
+
+        bench 'multiplication' do
+          1 * 1
+        end
+      end
     end
 
-    let(:bench_object) { instance_double(Benchable::Benchmark, run: true) }
+    let(:bench_mock) { instance_double(Benchmark::IPS::Job) }
 
     before do
-      allow(described_class).to receive(:build).with(:bm, {}).and_return(bench_object)
+      allow(bench_mock).to receive(:config)
+      allow(bench_mock).to receive(:report).with('Sum').and_yield
+      allow(bench_mock).to receive(:report).with('Multiplication').and_yield
+      allow(Benchmark).to receive(:ips).and_yield(bench_mock)
     end
 
-    it 'builds and runs a benchmark' do
+    it 'configures IPS benchmarks' do
       run_benchmark
-      expect(bench_object).to have_received(:run)
+
+      expect(bench_mock).to have_received(:config).with(warmup: 0, time: 0.1)
+    end
+
+    it 'builds and runs a benchmark', :aggregate_failures do
+      run_benchmark
+
+      expect(bench_mock).to have_received(:report).with('Sum')
+      expect(bench_mock).to have_received(:report).with('Multiplication')
     end
   end
 end
