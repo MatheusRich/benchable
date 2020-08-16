@@ -23,7 +23,7 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-Benchable.bench do
+Benchable.bench(type: :ips, time: 5, warmup: 2) do
   def setup
     @array = (1..1000000).map { rand }
   end
@@ -36,14 +36,15 @@ Benchable.bench do
     @array.dup.sort!
   end
 end
-# =>
+# Output:
 #                            user     system      total        real
 # Sort                   0.400133   0.011995   0.412128 (  0.412339)
 # Sort!                  0.388636   0.003980   0.392616 (  0.393054)
 ```
 
-<!-- ```ruby
-Benchable.bench(type: :ips, time: 5, warmup: 2) do
+TODO:
+```ruby
+Benchable.bench(:ips, time: 5, warmup: 2) do
   setup do
     @array = (1..1000000).map { rand }
   end
@@ -56,7 +57,14 @@ Benchable.bench(type: :ips, time: 5, warmup: 2) do
     @array.dup.sort!
   end
 end
-``` -->
+# Output:
+# Warming up --------------------------------------
+#                 Sort     1.000  i/100ms
+#                Sort!     1.000  i/100ms
+# Calculating -------------------------------------
+#                 Sort      2.496  (± 0.0%) i/s -     13.000  in   5.210732s
+#                Sort!      2.428  (± 0.0%) i/s -     13.000  in   5.358355s
+```
 
 ## Development
 
