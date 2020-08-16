@@ -13,6 +13,6 @@ module Benchable
   end
 
   def self.bench(type = :bm, **options, &block)
-    build(type, options, &block).run
+    build(type, **options, &block).run
   end
 end
