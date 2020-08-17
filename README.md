@@ -91,7 +91,7 @@ end
 ### Benchmark options
 You can provide benchmark options by passing a hash to the `Benchable.bench` method.
 
-### Options for `Benchmark.bm` and `Benchmark.bmbm`
+#### Options for `Benchmark.bm` and `Benchmark.bmbm`
 On `bm` and `bmbm` benchmarks the only available option is `width`, which specifies the leading spaces for labels on each line. The default width is `20`.
 
 ```ruby
@@ -100,7 +100,7 @@ Benchable.bench(width: 25) do
 end
 ```
 
-### Options for `Benchmark::IPS`
+#### Options for `Benchmark::IPS`
 If you're using, you can pass any option accepted by `Benchmark::IPS` `config` method.
 
 ```ruby
