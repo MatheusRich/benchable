@@ -64,7 +64,7 @@ end
 > We've used `Array#dup` in the example above to prevent the benchmarks for modifying the original array
 
 ### Benchmark types
-There are 3 benchmark types available: `bm`, `bmbm` and `ips`. You can specify it by passing the type as a symbol on the `Benchable.bench` method. The default type is `bm`.
+There are 4 benchmark types available: `bm`, `bmbm`, `ips` and `memory`. You can specify the type by passing it as a symbol on the `Benchable.bench` method. The default type is `bm`.
 
 ```ruby
 Benchable.bench(:bm) do
@@ -76,6 +76,10 @@ Benchable.bench(:bmbm) do
 end
 
 Benchable.bench(:ips) do
+  # ...
+end
+
+Benchable.bench(:memory) do
   # ...
 end
 ```
@@ -101,11 +105,11 @@ end
 ```
 
 #### Options for `Benchmark::IPS`
-If you're using, you can pass any option accepted by `Benchmark::IPS` `config` method.
+If you're using `::IPS`, you can pass any option accepted by `Benchmark::IPS`' `config` method.
 
 ```ruby
 Benchable.bench(:ips, time: 5, warmup: 2) do
-  # 
+  # ...
 end
 # Output:
 # Warming up --------------------------------------
@@ -114,6 +118,18 @@ end
 # Calculating -------------------------------------
 #                 Sort      2.114  (± 0.0%) i/s -     11.000  in   5.205127s
 #                Sort!      2.120  (± 0.0%) i/s -     11.000  in   5.189772s
+```
+
+#### Options for `Benchmark::Memory`
+You can pass [any option accepted](https://github.com/michaelherold/benchmark-memory#options) by `Benchmark::Memory`.
+
+```ruby
+Benchable.bench(:memory, quiet: true) do
+  # ...
+end
+# Output:
+# => #<Benchmark::Memory::Report:0x0000558cdfdbc498 ...>
+
 ```
 
 ## Development
@@ -128,7 +144,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Matheu
 
 
 ## Acknowledgments
-Thanks [@naomik](https://github.com/naomik) for building the bease idea for this in [his gist](https://gist.github.com/naomik/6012505)!
+Thanks [@naomik](https://github.com/naomik) for building the base idea for this in [his gist](https://gist.github.com/naomik/6012505)!
 
 ## License
 
