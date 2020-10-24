@@ -2,11 +2,12 @@
 
 require 'benchmark'
 require 'benchmark/ips'
+require 'benchmark/memory'
 
 module Benchable
   class Benchmark
     DEFAULT_WIDTH = 20
-    BENCHMARK_TYPES = %i[bm bmbm ips].freeze
+    BENCHMARK_TYPES = %i[bm bmbm ips memory].freeze
 
     def initialize(benchmark_type, options = {})
       @benchmark_type = benchmark_type
@@ -63,9 +64,17 @@ module Benchable
     end
 
     def benchmark(&block)
+      ::Benchmark.public_send(*benchmark_args, &block)
+    end
+
+    def benchmark_args
       width = options[:width] || DEFAULT_WIDTH
 
-      ::Benchmark.public_send(benchmark_type, width, &block)
+      args = [benchmark_type]
+      args << width unless benchmark_type == :memory
+      args << options if benchmark_type == :memory
+
+      args
     end
   end
 end
