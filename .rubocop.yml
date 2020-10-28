@@ -9,11 +9,5 @@ Layout/LineLength:
 
 Metrics/BlockLength:
   Exclude:
-    - "spec/**/*"
+    - "spec/**/*.rb"
     - "Guardfile"
-
-Style/Documentation:
-  Enabled: false
-
-Style/DocumentationMethod:
-  Enabled: false

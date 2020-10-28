@@ -127,6 +127,7 @@ DEPENDENCIES
   rubocop-rspec (~> 1.42)
   simplecov (~> 0.18.5)
   solargraph (~> 0.39.14)
+  yard (~> 0.9.25)
 
 BUNDLED WITH
    2.1.4
