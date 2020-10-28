@@ -5,6 +5,9 @@ require 'benchmark/ips'
 require 'benchmark/memory'
 
 module Benchable
+  # Benchmarkable main class to perform benchmarks.
+  #
+  # Use the method Benchable.bench to declare a benchmark.
   class Benchmark
     DEFAULT_WIDTH = 20
     BENCHMARK_TYPES = %i[bm bmbm ips memory].freeze
