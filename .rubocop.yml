@@ -3,29 +3,11 @@ require:
 
 AllCops:
   NewCops: enable
-  Include:
-    - Guardfile
-    - Rakefile  
 
 Layout/LineLength:
   Max: 120
 
 Metrics/BlockLength:
   Exclude:
-    - "spec/**/*"
+    - "spec/**/*.rb"
     - "Guardfile"
-
-Layout/HeredocIndentation:
-  Enabled: false
-
-Metrics/ClassLength:
-  Enabled: false
-
-Metrics/ModuleLength:
-  Enabled: false
-
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*.rb'
-
-    
