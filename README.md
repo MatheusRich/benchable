@@ -1,6 +1,18 @@
-# Benchable
+<p align="center">
+  <h1 align="center">Benchable</h1>
 
-Write benchmarks without the hassle.
+  <p align="center">
+    <i>Write benchmarks without the hassle.</i>
+    <br>
+    <br>
+    <img src="https://img.shields.io/gem/v/benchable">
+    <img src="https://img.shields.io/gem/dt/benchable">
+    <img src="https://github.com/MatheusRich/benchable/workflows/Ruby/badge.svg">
+    <a href="https://github.com/MatheusRich/benchable/blob/master/LICENSE">
+      <img src="https://img.shields.io/github/license/MatheusRich/benchable.svg" alt="License">
+    </a>
+  </p>
+</p>
 
 ## Installation
 
