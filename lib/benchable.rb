@@ -17,8 +17,11 @@ module Benchable
     def bench(*types, **options, &block)
       types << :bm if types.empty?
 
-      types.map { |type| build(type, **options, &block).run }
+      if options.empty?
+        types.map { |type| build(type, &block).run }
+      else
+        types.map { |type| build(type, **options, &block).run }
+      end
     end
-    ruby2_keywords :bench if respond_to?(:ruby2_keywords, true)
   end
 end

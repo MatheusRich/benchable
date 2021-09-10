@@ -9,7 +9,7 @@ RSpec.describe Benchable do
 
   describe ".build" do
     subject(:build_benchmark) do
-      described_class.build(:ips, time: 0.2, warmup: 0.1) do
+      Benchable.build(:ips, time: 0.2, warmup: 0.1) do
         setup do
           puts "Setting up..."
         end
@@ -40,13 +40,13 @@ RSpec.describe Benchable do
     end
 
     it "accepts options without defining a benchmark type" do
-      expect { described_class.build(width: 1) }.not_to raise_error
+      expect { Benchable.build(width: 1) }.not_to raise_error
     end
   end
 
   describe ".bench" do
     subject(:run_benchmark) do
-      described_class.bench(:ips, warmup: 0, time: 0.1) do
+      Benchable.bench(:ips, warmup: 0, time: 0.1) do
         bench "sum" do
           1 + 1
         end
@@ -87,7 +87,7 @@ RSpec.describe Benchable do
         allow(Benchable).to receive(:build).with(:ips, warmup: 0, time: 0.1).and_return(dummy_bench)
         allow(Benchable).to receive(:build).with(:bm, warmup: 0, time: 0.1).and_return(dummy_bench)
 
-        described_class.bench(:ips, :bm, warmup: 0, time: 0.1) do
+        Benchable.bench(:ips, :bm, warmup: 0, time: 0.1) do
           bench "sum" do
             1 + 1
           end
@@ -106,9 +106,9 @@ RSpec.describe Benchable do
     context "when no benchmark type is given" do
       it "defaults to bm benchmark" do
         dummy_bench = instance_double(Benchable::Benchmark, run: true)
-        allow(Benchable).to receive(:build).with(:bm, {}).and_return(dummy_bench)
+        allow(Benchable).to receive(:build).with(:bm).and_return(dummy_bench)
 
-        described_class.bench do
+        Benchable.bench do
           bench "sum" do
             1 + 1
           end
@@ -118,7 +118,7 @@ RSpec.describe Benchable do
           end
         end
 
-        expect(Benchable).to have_received(:build).with(:bm, {})
+        expect(Benchable).to have_received(:build).with(:bm)
         expect(dummy_bench).to have_received(:run)
       end
     end
