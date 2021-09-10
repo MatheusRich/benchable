@@ -79,5 +79,47 @@ RSpec.describe Benchable do
       expect(bench_mock).to have_received(:report).with('Multiplication')
       expect(bench_mock).to have_received(:compare!)
     end
+
+    context 'when multiple benchmark types are given' do
+      it 'builds and runs one bechmark for each type' do
+        dummy_bench = instance_double(Benchable::Benchmark, run: true)
+        allow(Benchable).to receive(:build).with(:ips, warmup: 0, time: 0.1).and_return(dummy_bench)
+        allow(Benchable).to receive(:build).with(:bm, warmup: 0, time: 0.1).and_return(dummy_bench)
+
+        described_class.bench(:ips, :bm, warmup: 0, time: 0.1) do
+          bench 'sum' do
+            1 + 1
+          end
+
+          bench 'multiplication' do
+            1 * 1
+          end
+        end
+
+        expect(dummy_bench).to have_received(:run).twice
+        expect(Benchable).to have_received(:build).with(:ips, warmup: 0, time: 0.1)
+        expect(Benchable).to have_received(:build).with(:bm, warmup: 0, time: 0.1)
+      end
+    end
+
+    context 'when no benchmark type is given' do
+      it 'defaults to bm benchmark' do
+        dummy_bench = instance_double(Benchable::Benchmark, run: true)
+        allow(Benchable).to receive(:build).with(:bm).and_return(dummy_bench)
+
+        described_class.bench do
+          bench 'sum' do
+            1 + 1
+          end
+
+          bench 'multiplication' do
+            1 * 1
+          end
+        end
+
+        expect(Benchable).to have_received(:build).with(:bm)
+        expect(dummy_bench).to have_received(:run)
+      end
+    end
   end
 end

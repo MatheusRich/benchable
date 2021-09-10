@@ -9,9 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Compare benchmarks after running them 🤦‍♂️.
+- Allow running multiple benchmarks at once:
 
-<!-- ### Changed -->
+```ruby
+Benchable.bench(:ips, :memory) do
+  setup do
+    @array = (1..1000000).map { rand }
+  end
+
+  bench 'sort' do
+    @array.dup.sort
+  end
+
+  bench 'sort!' do
+    @array.dup.sort!
+  end
+end
+```
+
+### Changed
+
+- Compare benchmarks after running them 🤦‍♂️.
 <!-- ### Removed -->
 ---
 

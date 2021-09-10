@@ -13,7 +13,9 @@ module Benchable
     bench_class.new(type, **options)
   end
 
-  def self.bench(type = :bm, **options, &block)
-    build(type, **options, &block).run
+  def self.bench(*types, **options, &block)
+    types << :bm if types.empty?
+
+    types.map { |type| build(type, **options, &block).run }
   end
 end
