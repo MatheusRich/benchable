@@ -106,7 +106,7 @@ RSpec.describe Benchable do
     context "when no benchmark type is given" do
       it "defaults to bm benchmark" do
         dummy_bench = instance_double(Benchable::Benchmark, run: true)
-        allow(Benchable).to receive(:build).with(:bm).and_return(dummy_bench)
+        allow(Benchable).to receive(:build).with(:bm, {}).and_return(dummy_bench)
 
         described_class.bench do
           bench "sum" do
@@ -118,7 +118,7 @@ RSpec.describe Benchable do
           end
         end
 
-        expect(Benchable).to have_received(:build).with(:bm)
+        expect(Benchable).to have_received(:build).with(:bm, {})
         expect(dummy_bench).to have_received(:run)
       end
     end

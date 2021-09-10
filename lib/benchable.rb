@@ -7,15 +7,18 @@ require_relative "benchable/version"
 module Benchable
   class Error < StandardError; end
 
-  def self.build(type = :bm, **options, &block)
-    bench_class = Class.new(Benchmark, &block)
+  class << self
+    def build(type = :bm, **options, &block)
+      bench_class = Class.new(Benchmark, &block)
 
-    bench_class.new(type, **options)
-  end
+      bench_class.new(type, **options)
+    end
 
-  def self.bench(*types, **options, &block)
-    types << :bm if types.empty?
+    def bench(*types, **options, &block)
+      types << :bm if types.empty?
 
-    types.map { |type| build(type, **options, &block).run }
+      types.map { |type| build(type, **options, &block).run }
+    end
+    ruby2_keywords :bench if respond_to?(:ruby2_keywords, true)
   end
 end
