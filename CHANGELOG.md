@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ---
 
+## [0.3.1] - 2021-09-10
+
+### Changed
+
+- Fix benchmark arguments for Benchmark::Memory.
+
 ## [0.3.0] - 2021-09-09
 
 ### Added
@@ -52,7 +58,8 @@ end
 ### Added
 - Support for `Benchmark.bm`, `Benchmark.bmbm` and `Benchmark.ips`.
 
-[unreleased]: https://github.com/MatheusRich/benchable/compare/v0.3.0...HEAD
+[unreleased]: https://github.com/MatheusRich/benchable/compare/v0.3.1...HEAD
 [0.1.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.1.0
 [0.2.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.2.0
 [0.3.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.3.0
+[0.3.1]: https://github.com/MatheusRich/benchable/releases/tag/v0.3.1

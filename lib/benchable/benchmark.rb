@@ -12,7 +12,7 @@ module Benchable
     DEFAULT_WIDTH = 20
     BENCHMARK_TYPES = %i[bm bmbm ips memory].freeze
 
-    def initialize(benchmark_type, options = {})
+    def initialize(benchmark_type, **options)
       @benchmark_type = benchmark_type
       @options = options
 
@@ -53,7 +53,7 @@ module Benchable
 
     def run_benchmark
       benchmark do |b|
-        b.config(**options) if benchmark_type == :ips
+        b.config(options) if benchmark_type == :ips
 
         cases.each do |benchmark_case|
           b.report(name_for(benchmark_case)) do
@@ -70,17 +70,19 @@ module Benchable
     end
 
     def benchmark(&block)
-      ::Benchmark.public_send(*benchmark_args, &block)
+      if benchmark_type == :memory
+        ::Benchmark.public_send(benchmark_type, **benchmark_args, &block)
+      else
+        ::Benchmark.public_send(benchmark_type, *benchmark_args, &block)
+      end
     end
 
     def benchmark_args
-      width = options[:width] || DEFAULT_WIDTH
-
-      args = [benchmark_type]
-      args << width unless benchmark_type == :memory
-      args << options if benchmark_type == :memory
-
-      args
+      if benchmark_type == :memory
+        options.slice(:quiet)
+      else
+        options[:width] || DEFAULT_WIDTH
+      end
     end
   end
 end
