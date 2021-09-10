@@ -31,7 +31,9 @@ Or install it yourself as:
     $ gem install benchable
 
 ## Usage
+
 ### Basic usage
+
 Use the method `Benchable.bench` to declare a benchmark. Write each benchmark case with the `bench` method. The benchmark will run automatically.
 
 ```ruby
@@ -73,10 +75,12 @@ end
 # Sort                   0.400133   0.011995   0.412128 (  0.412339)
 # Sort!                  0.388636   0.003980   0.392616 (  0.393054)
 ```
+
 > We've used `Array#dup` in the example above to prevent the benchmarks for modifying the original array
 
 ### Benchmark types
-There are 4 benchmark types available: `bm`, `bmbm`, `ips` and `memory`. You can specify the type by passing it as a symbol on the `Benchable.bench` method. The default type is `bm`.
+
+Four benchmark types are available: `bm`, `bmbm`, `ips` and `memory`. You can specify the type by passing it as a symbol on the `Benchable.bench` method. The default type is `bm`.
 
 ```ruby
 Benchable.bench(:bm) do
@@ -96,6 +100,14 @@ Benchable.bench(:memory) do
 end
 ```
 
+You can also run multiple benchmarks at once:
+
+```ruby
+Benchable.bench(:ips, :memory) do
+  # ...
+end
+```
+
 Given an invalid benchmark type, Benchable will raise an exception.
 
 ```ruby
@@ -106,9 +118,11 @@ end
 ```
 
 ### Benchmark options
+
 You can provide benchmark options by passing a hash to the `Benchable.bench` method.
 
 #### Options for `Benchmark.bm` and `Benchmark.bmbm`
+
 On `bm` and `bmbm` benchmarks the only available option is `width`, which specifies the leading spaces for labels on each line. The default width is `20`.
 
 ```ruby
@@ -118,6 +132,7 @@ end
 ```
 
 #### Options for `Benchmark::IPS`
+
 If you're using `::IPS`, you can pass any option accepted by `Benchmark::IPS`' `config` method.
 
 ```ruby
@@ -134,6 +149,7 @@ end
 ```
 
 #### Options for `Benchmark::Memory`
+
 You can pass [any option accepted](https://github.com/michaelherold/benchmark-memory#options) by `Benchmark::Memory`.
 
 ```ruby
@@ -155,8 +171,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/MatheusRich/benchable. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/MatheusRich/benchable/blob/master/CODE_OF_CONDUCT.md).
 
-
 ## Acknowledgments
+
 Thanks [@naomik](https://github.com/naomik) for building the base idea for this in [his gist](https://gist.github.com/naomik/6012505)!
 
 ## License
