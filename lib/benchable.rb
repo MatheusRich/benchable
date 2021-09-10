@@ -3,7 +3,7 @@
 require_relative 'benchable/benchmark'
 require_relative 'benchable/version'
 
-# The Benchable library is used for automating benchmarks
+# Benchable is used for automating benchmarks
 module Benchable
   class Error < StandardError; end
 

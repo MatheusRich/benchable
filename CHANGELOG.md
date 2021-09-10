@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-<!-- ### Added -->
+### Added
+
+- Compare benchmarks after running them 🤦‍♂️.
+
 <!-- ### Changed -->
 <!-- ### Removed -->
 ---

@@ -37,7 +37,7 @@ Use the method `Benchable.bench` to declare a benchmark. Write each benchmark ca
 ```ruby
 Benchable.bench do
   bench 'sort' do
-    (1..1000000).map { rand }.sort 
+    (1..1000000).map { rand }.sort
   end
 
   bench 'sort!' do
@@ -61,7 +61,7 @@ Benchable.bench do
   end
 
   bench 'sort' do
-    @array.dup.sort 
+    @array.dup.sort
   end
 
   bench 'sort!' do
@@ -97,6 +97,7 @@ end
 ```
 
 Given an invalid benchmark type, Benchable will raise an exception.
+
 ```ruby
 Benchable.bench(:invalid) do
   # ...

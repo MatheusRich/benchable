@@ -5,7 +5,7 @@ require 'benchmark/ips'
 require 'benchmark/memory'
 
 module Benchable
-  # Benchmarkable main class to perform benchmarks.
+  # Main class to perform benchmarks.
   #
   # Use the method Benchable.bench to declare a benchmark.
   class Benchmark
@@ -51,14 +51,16 @@ module Benchable
     end
 
     def run_benchmark
-      benchmark do |with|
-        with.config(**options) if benchmark_type == :ips
+      benchmark do |b|
+        b.config(**options) if benchmark_type == :ips
 
         cases.each do |benchmark_case|
-          with.report(name_for(benchmark_case)) do
+          b.report(name_for(benchmark_case)) do
             method(benchmark_case).call
           end
         end
+
+        b.compare! if b.respond_to? :compare!
       end
     end
 

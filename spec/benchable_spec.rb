@@ -60,6 +60,7 @@ RSpec.describe Benchable do
 
     before do
       allow(bench_mock).to receive(:config)
+      allow(bench_mock).to receive(:compare!)
       allow(bench_mock).to receive(:report).with('Sum').and_yield
       allow(bench_mock).to receive(:report).with('Multiplication').and_yield
       allow(Benchmark).to receive(:ips).and_yield(bench_mock)
@@ -76,6 +77,7 @@ RSpec.describe Benchable do
 
       expect(bench_mock).to have_received(:report).with('Sum')
       expect(bench_mock).to have_received(:report).with('Multiplication')
+      expect(bench_mock).to have_received(:compare!)
     end
   end
 end
