@@ -27,9 +27,12 @@ Benchable.bench(:ips, :memory) do
 end
 ```
 
+- Compare benchmarks after running them 🤦‍♂️.
+
 ### Changed
 
-- Compare benchmarks after running them 🤦‍♂️.
+- Require >= Ruby 2.6
+
 <!-- ### Removed -->
 ---
 
@@ -46,5 +49,6 @@ end
 ### Added
 - Support for `Benchmark.bm`, `Benchmark.bmbm` and `Benchmark.ips`.
 
-[unreleased]: https://github.com/MatheusRich/benchable/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/MatheusRich/benchable/compare/v0.2.0...HEAD
 [0.1.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.1.0
+[0.2.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.2.0
