@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'benchmark'
-require 'benchmark/ips'
-require 'benchmark/memory'
+require "benchmark"
+require "benchmark/ips"
+require "benchmark/memory"
 
 module Benchable
   # Main class to perform benchmarks.
@@ -27,7 +27,8 @@ module Benchable
       define_method(method_name_for(name), &block)
     end
 
-    def setup; end
+    def setup
+    end
 
     def run
       setup
@@ -39,7 +40,7 @@ module Benchable
     end
 
     private_class_method def self.method_name_for(name)
-      "bench_#{name.to_s.gsub(' ', '_').downcase}"
+      "bench_#{name.to_s.tr(" ", "_").downcase}"
     end
 
     private
@@ -65,7 +66,7 @@ module Benchable
     end
 
     def name_for(benchmark_case)
-      benchmark_case.to_s.gsub('bench_', '').gsub('_', ' ').capitalize
+      benchmark_case.to_s.gsub("bench_", "").tr("_", " ").capitalize
     end
 
     def benchmark(&block)

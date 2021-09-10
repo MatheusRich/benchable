@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'benchable/benchmark'
-require_relative 'benchable/version'
+require_relative "benchable/benchmark"
+require_relative "benchable/version"
 
 # Benchable is used for automating benchmarks
 module Benchable
