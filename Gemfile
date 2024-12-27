@@ -8,7 +8,6 @@ gemspec
 gem "guard-rspec", require: false
 gem "rake", "~> 12.0"
 gem "rspec", "~> 3.0"
-gem "standard", "~> 1.30.0"
-gem "simplecov", "~> 0.18.5", require: false
-gem "solargraph", "~> 0.39"
+gem "standard", "~> 1.30"
+gem "simplecov", "~> 0.22.0", require: false
 gem "yard", "~> 0.9.25"
