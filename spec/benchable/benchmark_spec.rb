@@ -55,7 +55,7 @@ RSpec.describe Benchable::Benchmark do
     end
 
     it "creates a new bench method" do
-      expect { klass.new(:bm).bench_the_puts_method }.to output("Hello world!\n").to_stdout
+      expect { klass.new(:bm).public_send("bench_The puts method") }.to output("Hello world!\n").to_stdout
     end
   end
 

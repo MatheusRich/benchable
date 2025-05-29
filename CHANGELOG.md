@@ -6,7 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
 ---
+
+## [0.3.2] - 2025-05-29
+
+### Changed
+
+- Keep benchmark cases titles consistent
+
+Before, we would call "capitalize" on the title of the benchmark case, which
+would change the original string the user provided. This fixes it, so the report
+always uses the original title.
 
 ## [0.3.1] - 2021-09-10
 
@@ -48,6 +59,7 @@ end
 ## [0.2.0] - 2020-10-23
 
 ### Added
+
 - Support for `Benchmark.memory` via [benchmark-memory](https://github.com/michaelherold/benchmark-memory).
 
 [unreleased]: https://github.com/MatheusRich/benchable/compare/v0.2.0...HEAD
@@ -56,10 +68,12 @@ end
 ## [0.1.0] - 2020-08-16
 
 ### Added
+
 - Support for `Benchmark.bm`, `Benchmark.bmbm` and `Benchmark.ips`.
 
-[unreleased]: https://github.com/MatheusRich/benchable/compare/v0.3.1...HEAD
-[0.1.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.1.0
-[0.2.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.2.0
-[0.3.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.3.0
+[unreleased]: https://github.com/MatheusRich/benchable/compare/v0.3.2...HEAD
+[0.3.2]: https://github.com/MatheusRich/benchable/releases/tag/v0.3.2
 [0.3.1]: https://github.com/MatheusRich/benchable/releases/tag/v0.3.1
+[0.3.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.3.0
+[0.2.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.2.0
+[0.1.0]: https://github.com/MatheusRich/benchable/releases/tag/v0.1.0

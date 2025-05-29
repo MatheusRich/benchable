@@ -24,7 +24,7 @@ module Benchable
     end
 
     def self.bench(name, &block)
-      define_method(method_name_for(name), &block)
+      define_method(:"bench_#{name}", &block)
     end
 
     def setup
@@ -37,10 +37,6 @@ module Benchable
 
     def cases
       public_methods.grep(/\Abench_/)
-    end
-
-    private_class_method def self.method_name_for(name)
-      "bench_#{name.to_s.tr(" ", "_").downcase}"
     end
 
     private
@@ -56,7 +52,7 @@ module Benchable
         b.config(options) if benchmark_type == :ips
 
         cases.each do |benchmark_case|
-          b.report(name_for(benchmark_case)) do
+          b.report(title_for(benchmark_case)) do
             method(benchmark_case).call
           end
         end
@@ -65,8 +61,8 @@ module Benchable
       end
     end
 
-    def name_for(benchmark_case)
-      benchmark_case.to_s.gsub("bench_", "").tr("_", " ").capitalize
+    def title_for(benchmark_case)
+      benchmark_case.to_s.delete_prefix("bench_")
     end
 
     def benchmark(&block)
