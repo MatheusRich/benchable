@@ -25,4 +25,5 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rake
       - name: Linter
+        if: matrix.ruby == '3.4'
         run: bundle exec standardrb
