@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "guard-rspec", require: false
-gem "rake", "~> 12.0"
+gem "rake", "~> 13.0"
 gem "rspec", "~> 3.0"
 gem "standard", "~> 1.30"
 gem "simplecov", "~> 0.22.0", require: false
