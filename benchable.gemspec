@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "benchmark", ">= 0"
   spec.add_runtime_dependency "benchmark-ips", "~> 2.8", ">= 2.8.2"
   spec.add_runtime_dependency "benchmark-memory", "~> 0.1.2"
 end

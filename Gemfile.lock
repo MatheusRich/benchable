@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     benchable (0.3.2)
+      benchmark
       benchmark-ips (~> 2.8, >= 2.8.2)
       benchmark-memory (~> 0.1.2)
 
@@ -9,6 +10,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    benchmark (0.5.0)
     benchmark-ips (2.14.0)
     benchmark-memory (0.1.2)
       memory_profiler (~> 0.9)
